@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block title %}Submit Obituary - Obituary Management{% endblock %}
+
+{% block content %}
+    <h2>Submit an Obituary</h2>
+    <p>Please fill out the form below to submit an obituary.</p>
+
+    <form action="{% url 'submit_obituary' %}" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Name of the Deceased:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="date_of_birth">Date of Birth:</label>
+            <input type="date" id="date_of_birth" name="date_of_birth" required>
+        </div>
+        <div class="form-group">
+            <label for="date_of_death">Date of Death:</label>
+            <input type="date" id="date_of_death" name="date_of_death" required>
+        </div>
+        <div class="form-group">
+            <label for="biography">Biography:</label>
+            <textarea id="biography" name="biography" rows="6" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="photo">Upload Photo:</label>
+            <input type="file" id="photo" name="photo" accept="image/*">
+        </div>
+        <button type="submit" class="btn">Submit Obituary</button>
+    </form>
+{% endblock %}

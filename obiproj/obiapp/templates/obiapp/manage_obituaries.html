@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block title %}Manage Obituaries - Obituary Management{% endblock %}
+
+{% block content %}
+    <h2>Manage Obituaries</h2>
+    <p>Below is the list of submitted obituaries. You can view, edit, or delete each obituary.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Date of Birth</th>
+                <th>Date of Death</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for obituary in obituaries %}
+            <tr>
+                <td>{{ obituary.name }}</td>
+                <td>{{ obituary.date_of_birth }}</td>
+                <td>{{ obituary.date_of_death }}</td>
+                <td>
+                    <a href="{% url 'view_obituary' obituary.id %}" class="btn">View</a>
+                    <a href="{% url 'edit_obituary' obituary.id %}" class="btn">Edit</a>
+                    <form action="{% url 'delete_obituary' obituary.id %}" method="POST" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

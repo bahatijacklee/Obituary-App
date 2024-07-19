@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block title %}Home - Obituary Management{% endblock %}
+
+{% block content %}
+    <h2>Welcome to the Obituary Management System</h2>
+    <p>This is a place to submit, manage, and view obituaries with ease and respect.</p>
+
+    <div class="features">
+        <div class="feature">
+            <h3>Submit Obituary</h3>
+            <p>Submit a new obituary for a loved one, ensuring their memory is preserved and honored.</p>
+            <a href="{% url 'submit_obituary' %}" class="btn">Submit Now</a>
+        </div>
+        <div class="feature">
+            <h3>Manage Obituaries</h3>
+            <p>Manage submitted obituaries, make updates, and ensure the information is accurate and up-to-date.</p>
+            <a href="{% url 'manage_obituaries' %}" class="btn">Manage Now</a>
+        </div>
+        <div class="feature">
+            <h3>Contact Us</h3>
+            <p>Get in touch with us for any assistance or inquiries you may have.</p>
+            <a href="{% url 'contact_us' %}" class="btn">Contact Us</a>
+        </div>
+    </div>
+{% endblock %}
